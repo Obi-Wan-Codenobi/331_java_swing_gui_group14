@@ -18,9 +18,9 @@ public class GUI extends JFrame implements ActionListener {
       //Building the connection
       Connection conn = null;
       //TODO STEP 1 (see line 7)
-      String database_name = "DBNAME";
-      String database_user = "USERNAME";
-      String database_password = "PASSWORD";
+      String database_name = "csce331_903_01_db";
+      String database_user = "csce331_903_01_user";
+      String database_password = "PyaPKODI";
       String database_url = String.format("jdbc:postgresql://csce-315-db.engr.tamu.edu/%s", database_name);
       try {
         conn = DriverManager.getConnection(database_url, database_user, database_password);
@@ -37,7 +37,12 @@ public class GUI extends JFrame implements ActionListener {
         Statement stmt = conn.createStatement();
         //create a SQL statement
         //TODO Step 2 (see line 8)
-        String sqlStatement = "SQL COMMAND";
+        String sqlStatement = "SELECT menuitems.name, menuitems.inventory_items FROM menuitems;";
+
+
+
+        //String sqlStatement = "SELECT SUM(sub_total) FROM order_history;";
+
         //send statement to DBMS
         ResultSet result = stmt.executeQuery(sqlStatement);
         while (result.next()) {
@@ -61,8 +66,12 @@ public class GUI extends JFrame implements ActionListener {
       b.addActionListener(s);
 
       //TODO Step 3 (see line 9)
+      JTextArea jPane = new JTextArea();
+  
+      jPane.setText(name);
 
       //TODO Step 4 (see line 10)
+      p.add(jPane);
 
       // add button to panel
       p.add(b);
